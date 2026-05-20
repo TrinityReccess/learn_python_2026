@@ -159,5 +159,22 @@ print(x or y)   # Logical OR
 print(not x)    # Logical NOT
 
 
+# Membership Operators
+# in, not in
+fruits = ["apple", "banana", "orange"]
+print("apple" in fruits)  # True
+print("grape" in fruits)  # False
+print("grape" not in fruits)  # True
+
+
+# assignment operators
+# =, +=, -=, *=, /=, %=
+counter = 0
+counter += 1  # Increment counter by 1
+counter *= 2  # Double the counter
+counter -= 3  # Decrement counter by 3
+counter /= 2  # Divide counter by 2
+counter %= 5  # Get the remainder when counter is divided by 5
+
 
 
