@@ -173,3 +173,8 @@ match day:
         print("Start of the work week.")  # This will print
     case _:
         print("It's a weekday.")  # _ is the default case
+
+
+
+
+day = input("Enter a day of the week: ").lower()
