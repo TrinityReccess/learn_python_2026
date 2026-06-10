@@ -46,6 +46,27 @@
 # The variable (e.g. "fruit") takes the value of each item
 # in the sequence one at a time. You can name it anything,
 # but give it a meaningful name so your code is easy to read.
+#
+# ✅ WHY USE A for LOOP?
+# ---------------------------------------------------------------
+# Use a for loop when:
+#   • You already HAVE a collection (list, string, dictionary)
+#     and you want to do something with each item inside it.
+#   • You know EXACTLY how many times to repeat (e.g. 10 students,
+#     5 items in a cart, 26 letters of the alphabet).
+#   • You want clean, readable code that clearly says
+#     "for each item, do this".
+#
+# DON'T use a for loop when:
+#   • You don't know when to stop (use while instead).
+#   • You are waiting for something to happen (e.g. user input,
+#     a sensor reading — use while instead).
+#
+# REAL-WORLD EXAMPLES OF WHEN TO USE for:
+#   → Send an SMS to every contact in a phone book
+#   → Calculate the average mark of every student in a class
+#   → Display every product on an e-commerce website
+#   → Check every uploaded image for a virus
 # ----------------------------------------------------------------
 
 # SIMPLE EXAMPLE — Loop over a list of fruits
@@ -109,6 +130,24 @@ print(f"\nYour total bill is: UGX {total_bill:,}")
 # NOTE: range() does NOT include the last number.
 #   range(5) gives: 0, 1, 2, 3, 4  — NOT 5
 #   range(1, 6) gives: 1, 2, 3, 4, 5  — NOT 6
+#
+# ✅ WHY USE range()?
+# ---------------------------------------------------------------
+# Use range() when:
+#   • You want to repeat something exactly N times
+#     (e.g. "do this 10 times").
+#   • You need a counter — a number that goes up or down
+#     with each step (e.g. numbering students 1, 2, 3...).
+#   • You want to count in steps (e.g. every 2nd seat, every
+#     5th row, going backwards from 10 to 1).
+#   • You don't have a list to loop over — you just need
+#     a sequence of numbers.
+#
+# REAL-WORLD EXAMPLES:
+#   → Generate 50 student ID numbers automatically
+#   → Print a times table (1x1 to 12x12)
+#   → Count down before a rocket launches
+#   → Number each line in a printed report
 # ----------------------------------------------------------------
 
 print("\n--- range(5): 0 to 4 ---")
@@ -198,6 +237,33 @@ print(f"\nThe name '{name}' has {vowel_count} vowel(s).")
 #       # code to run
 #       # update something so the condition eventually becomes False
 #
+# ✅ WHY USE A while LOOP?
+# ---------------------------------------------------------------
+# Use a while loop when:
+#   • You do NOT know how many times the loop will run.
+#     The loop runs for as long as something is True.
+#   • You are WAITING for something to happen:
+#     → Waiting for the user to enter the correct PIN
+#     → Waiting for a sensor to detect movement
+#     → Waiting for a server to respond
+#   • You are building a MENU that should keep showing
+#     until the user chooses to exit.
+#   • You are building a GAME that keeps running until
+#     the player loses or wins.
+#
+# DON'T use a while loop when:
+#   • You already have a list, string, or dictionary to
+#     loop over — use for instead.
+#   • You know exactly how many times to repeat — use for
+#     with range() instead.
+#
+# REAL-WORLD EXAMPLES:
+#   → A USSD mobile money menu (*165#) — keeps showing
+#     until you press 0 to exit
+#   → An ATM that lets you try your PIN up to 3 times
+#   → A game loop that runs until the player's health = 0
+#   → A chat app waiting for new messages to arrive
+#
 # ⚠️ VERY IMPORTANT WARNING — INFINITE LOOPS:
 #   If you forget to update the variable inside the loop,
 #   the condition will NEVER become False and your program
@@ -270,6 +336,27 @@ while True:  # This loop runs forever UNTIL we hit a break
 #
 # Think of it as an emergency exit door — you use it when
 # you have found what you need and there is no point continuing.
+#
+# ✅ WHY USE break?
+# ---------------------------------------------------------------
+# Use break when:
+#   • You are SEARCHING for something — once you find it,
+#     stop. There is no reason to keep checking the rest.
+#   • Continuing to loop after finding the answer would
+#     WASTE time and slow your program down.
+#   • You want to EXIT a while True menu when the user
+#     chooses the "Exit" option.
+#
+# THINK OF IT LIKE THIS:
+#   Imagine you are looking for your friend in a crowd of
+#   1000 people. The moment you spot them, you stop looking.
+#   You do NOT keep walking through the remaining 999 people
+#   just because you started.
+#
+# REAL-WORLD EXAMPLES:
+#   → Stop searching a database once the matching record is found
+#   → Exit a menu when the user presses 0
+#   → Stop checking seats once the first available one is found
 # ----------------------------------------------------------------
 
 # SIMPLE EXAMPLE
@@ -315,6 +402,26 @@ for seat_number, status in enumerate(seats, start=1):
 #
 # Unlike break (which exits the whole loop), continue just
 # skips one turn and keeps the loop going.
+#
+# ✅ WHY USE continue?
+# ---------------------------------------------------------------
+# Use continue when:
+#   • You have a list but only SOME items should be processed.
+#     Instead of wrapping everything in a big if-else block,
+#     you skip the ones you don't need early with continue.
+#   • It makes your code CLEANER and easier to read.
+#
+# THINK OF IT LIKE THIS:
+#   Imagine a teacher marking attendance. When she sees a name
+#   of a student who is on sick leave, she calls "skip" and
+#   moves to the next name — she does not stop taking attendance
+#   entirely, she just skips that one student.
+#
+# REAL-WORLD EXAMPLES:
+#   → Skip suspended accounts when sending a newsletter
+#   → Skip blank/empty entries in a submitted form
+#   → Skip out-of-stock items when printing a product list
+#   → Skip weekends when generating a work schedule
 # ----------------------------------------------------------------
 
 # SIMPLE EXAMPLE — skip the number 4
@@ -541,3 +648,207 @@ else:
 #  │  • You want to skip certain items but keep looping          │
 #  │  • Example: skip suspended users, skip blank form entries   │
 #  └─────────────────────────────────────────────────────────────┘
+
+
+# ================================================================
+# 11. REAL-WORLD PROJECT — USSD MOBILE MONEY MENU
+# ================================================================
+#
+# Have you ever dialed *165# or *185# on your phone?
+# That is a USSD menu — a simple text-based menu that lets
+# you send money, buy airtime, check your balance, and more.
+#
+# WHY while loop here?
+# → Because we do NOT know how many options the user will
+#   select before they exit. The menu must keep showing
+#   after every action until the user consciously chooses
+#   to leave (presses 0). That is exactly what while True does.
+#
+# WHY break?
+# → When the user selects 0 (Exit), there is nothing more
+#   to do. We use break to exit the while True loop cleanly.
+#
+# WHY if/elif/else inside the loop?
+# → Each number the user presses is a different action.
+#   We check what they pressed and run the matching code.
+#   If they press something invalid, we tell them and show
+#   the menu again — the while loop handles that automatically.
+#
+# This example uses concepts from multiple weeks:
+#   ✅ Variables (Week 4)
+#   ✅ input() and f-strings (Week 5)
+#   ✅ if / elif / else (Week 6)
+#   ✅ while loop + break (Week 8)  ← YOU ARE HERE
+# ================================================================
+
+balance = 50000  # The user's starting mobile money balance in UGX
+
+print("\n" + "=" * 38)
+print("     WELCOME TO MOBILE MONEY")
+print("=" * 38)
+
+while True:
+    # ── Show the main menu every time the loop runs ──
+    print("\n" + "-" * 38)
+    print("  MAIN MENU")
+    print("-" * 38)
+    print("  1. Send Money")
+    print("  2. Withdraw Cash")
+    print("  3. Check Balance")
+    print("  4. Buy Airtime")
+    print("  5. Pay Bills")
+    print("  0. Exit")
+    print("-" * 38)
+
+    choice = input("  Enter choice: ").strip()
+
+    # ── OPTION 1: Send Money ──────────────────────────
+    if choice == "1":
+        print("\n  --- SEND MONEY ---")
+        recipient = input("  Enter recipient number: ")
+        amount_input = input("  Enter amount (UGX): ")
+
+        # Make sure the user typed a valid number
+        if not amount_input.isdigit():
+            print("  ❌ Invalid amount. Please enter numbers only.")
+        else:
+            amount = int(amount_input)
+            if amount <= 0:
+                print("  ❌ Amount must be greater than 0.")
+            elif amount > balance:
+                print(f"  ❌ Insufficient balance. Your balance is UGX {balance:,}")
+            else:
+                balance -= amount
+                print(f"  ✅ UGX {amount:,} sent to {recipient} successfully.")
+                print(f"     New balance: UGX {balance:,}")
+
+    # ── OPTION 2: Withdraw Cash ───────────────────────
+    elif choice == "2":
+        print("\n  --- WITHDRAW CASH ---")
+        agent = input("  Enter agent number: ")
+        amount_input = input("  Enter amount to withdraw (UGX): ")
+
+        if not amount_input.isdigit():
+            print("  ❌ Invalid amount. Please enter numbers only.")
+        else:
+            amount = int(amount_input)
+            if amount <= 0:
+                print("  ❌ Amount must be greater than 0.")
+            elif amount > balance:
+                print(f"  ❌ Insufficient balance. Your balance is UGX {balance:,}")
+            else:
+                balance -= amount
+                print(f"  ✅ Cash withdrawal of UGX {amount:,} from agent {agent} successful.")
+                print(f"     New balance: UGX {balance:,}")
+
+    # ── OPTION 3: Check Balance ───────────────────────
+    elif choice == "3":
+        print("\n  --- ACCOUNT BALANCE ---")
+        print(f"  Your current balance is: UGX {balance:,}")
+
+    # ── OPTION 4: Buy Airtime ─────────────────────────
+    elif choice == "4":
+        print("\n  --- BUY AIRTIME ---")
+        # A sub-menu inside the main menu — this is a NESTED menu!
+        print("  Select network:")
+        print("    1. MTN")
+        print("    2. Airtel")
+        print("    3. Africell")
+        print("    9. Back to Main Menu")
+
+        network_choice = input("  Enter choice: ").strip()
+
+        if network_choice == "9":
+            print("  ↩️  Returning to main menu...")
+        else:
+            networks = {"1": "MTN", "2": "Airtel", "3": "Africell"}
+
+            if network_choice not in networks:
+                print("  ❌ Invalid network selected.")
+            else:
+                network_name = networks[network_choice]
+                amount_input = input(f"  Enter airtime amount for {network_name} (UGX): ")
+
+                if not amount_input.isdigit():
+                    print("  ❌ Invalid amount. Please enter numbers only.")
+                else:
+                    amount = int(amount_input)
+                    if amount <= 0:
+                        print("  ❌ Amount must be greater than 0.")
+                    elif amount > balance:
+                        print(f"  ❌ Insufficient balance. Your balance is UGX {balance:,}")
+                    else:
+                        balance -= amount
+                        print(f"  ✅ UGX {amount:,} airtime loaded on {network_name} successfully.")
+                        print(f"     New balance: UGX {balance:,}")
+
+    # ── OPTION 5: Pay Bills ───────────────────────────
+    elif choice == "5":
+        print("\n  --- PAY BILLS ---")
+        # Another sub-menu
+        print("  Select biller:")
+        print("    1. UMEME (Electricity)")
+        print("    2. NWSC (Water)")
+        print("    3. URA (Tax)")
+        print("    9. Back to Main Menu")
+
+        bill_choice = input("  Enter choice: ").strip()
+
+        if bill_choice == "9":
+            print("  ↩️  Returning to main menu...")
+        else:
+            billers = {
+                "1": "UMEME (Electricity)",
+                "2": "NWSC (Water)",
+                "3": "URA (Tax)"
+            }
+
+            if bill_choice not in billers:
+                print("  ❌ Invalid biller selected.")
+            else:
+                biller_name = billers[bill_choice]
+                ref = input(f"  Enter your {biller_name} reference number: ")
+                amount_input = input(f"  Enter amount to pay (UGX): ")
+
+                if not amount_input.isdigit():
+                    print("  ❌ Invalid amount. Please enter numbers only.")
+                else:
+                    amount = int(amount_input)
+                    if amount <= 0:
+                        print("  ❌ Amount must be greater than 0.")
+                    elif amount > balance:
+                        print(f"  ❌ Insufficient balance. Your balance is UGX {balance:,}")
+                    else:
+                        balance -= amount
+                        print(f"  ✅ UGX {amount:,} paid to {biller_name} (Ref: {ref}) successfully.")
+                        print(f"     New balance: UGX {balance:,}")
+
+    # ── OPTION 0: Exit ────────────────────────────────
+    elif choice == "0":
+        print("\n  Thank you for using Mobile Money.")
+        print("  Your final balance: UGX {:,}".format(balance))
+        print("  Goodbye! 👋")
+        print("=" * 38)
+        break  # ← EXIT the while True loop — the program ends here
+
+    # ── INVALID INPUT ─────────────────────────────────
+    else:
+        print("  ❌ Invalid choice. Please enter a number from the menu.")
+        # The while loop automatically goes back to the top
+        # and shows the menu again — no extra code needed!
+
+# ================================================================
+# WHAT THIS MENU DEMONSTRATES:
+# ================================================================
+#   ✅ while True       — keeps the menu running indefinitely
+#   ✅ break            — cleanly exits when user chooses 0
+#   ✅ if/elif/else     — handles each menu option differently
+#   ✅ Nested menus     — sub-menus inside the main menu
+#   ✅ Input validation — checks the user typed a valid number
+#   ✅ Running total    — balance updates after every transaction
+#
+# This is how REAL mobile money systems work at their core.
+# The actual MTN MoMo or Airtel Money system is much larger,
+# but the fundamental logic is exactly this — a loop that
+# shows a menu, reads input, runs an action, and repeats.
+# ================================================================

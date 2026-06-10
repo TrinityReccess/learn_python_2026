@@ -352,7 +352,7 @@ sum_of_numbers(20, 69)  # 89
 ### 📁 Files
 | File | Description |
 |------|-------------|
-| `loops.py` | Full notes, real-world scenarios and examples on all loop types |
+| `loops.py` | Full notes, real-world scenarios, WHY explanations, and a USSD mobile money menu project |
 
 ---
 
