@@ -11,6 +11,8 @@ A beginner Python learning journal — building up from the basics week by week.
 | [Week 4](#week-4) | First Programs, Naming Conventions, Data Types |
 | [Week 5](#week-5) | User Input, Arithmetic Operators, Comparison & Logical Operators |
 | [Week 6](#week-6) | Conditional Statements (`if`, `elif`, `else`, nested, `match`) |
+| [Week 7](#week-7) | Functions (defining, calling, parameters) |
+| [Week 8](#week-8) | Loops (`for`, `while`, `break`, `continue`, nested loops) |
 
 ---
 
@@ -300,6 +302,140 @@ match day:
 python WEEK4/first_program.py
 python WEEK5/operators.py
 python WEEK6/conditional_statments_explained.py
+python WEEK7/functions.py
+python WEEK8/loops.py
+```
+
+---
+
+## WEEK 7
+
+### 📁 Files
+| File | Description |
+|------|-------------|
+| `functions.py` | Defining and calling functions with parameters |
+
+---
+
+### 🔧 Functions
+A function is a reusable block of code that only runs when it is called.
+You define it once and can call it as many times as you need.
+
+#### Defining and Calling a Function
+```python
+def greet_user(username):
+    print(f"Hello, {username} ☺️")
+
+greet_user("Kenneth")
+greet_user("Alice")
+```
+
+#### Function with Multiple Parameters
+```python
+def sum_of_numbers(a, b):
+    print(a + b)
+
+sum_of_numbers(2, 6)    # 8
+sum_of_numbers(20, 69)  # 89
+```
+
+**Key Rules:**
+- Use the `def` keyword to define a function
+- Give it a descriptive name in `snake_case`
+- Parameters go inside the brackets `()`
+- The body must be indented
+
+---
+
+## WEEK 8
+
+### 📁 Files
+| File | Description |
+|------|-------------|
+| `loops.py` | Full notes and examples on all loop types in Python |
+
+---
+
+### 🔁 Loops
+Loops let you repeat a block of code multiple times without rewriting it.
+
+#### `for` Loop
+Iterates over a sequence (list, string, range, etc.)
+```python
+fruits = ["apple", "banana", "mango"]
+
+for fruit in fruits:
+    print(fruit)
+```
+
+#### `for` Loop with `range()`
+```python
+for i in range(5):        # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(1, 6):     # 1, 2, 3, 4, 5
+    print(i)
+
+for i in range(0, 11, 2): # 0, 2, 4, 6, 8, 10 (step of 2)
+    print(i)
+```
+
+#### `while` Loop
+Runs as long as a condition is `True`.
+```python
+count = 1
+
+while count <= 5:
+    print(f"Count is: {count}")
+    count += 1  # Always update to avoid infinite loop!
+```
+
+#### `break` — Exit the Loop Early
+```python
+for number in range(1, 11):
+    if number == 5:
+        break       # stops the loop at 5
+    print(number)
+```
+
+#### `continue` — Skip an Iteration
+```python
+for number in range(1, 8):
+    if number == 4:
+        continue    # skips 4, continues with 5
+    print(number)
+```
+
+#### Nested Loops
+A loop inside another loop.
+```python
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i * j}")
+```
+
+#### Looping Over a Dictionary
+```python
+student = {"name": "Alice", "age": 20}
+
+for key, value in student.items():
+    print(f"{key}: {value}")
+```
+
+#### Practical Examples
+```python
+# Sum of numbers 1 to 10
+total = 0
+for i in range(1, 11):
+    total += i
+print(f"Sum: {total}")  # 55
+
+# Countdown
+countdown = 5
+while countdown > 0:
+    print(f"Launching in {countdown}...")
+    countdown -= 1
+print("🚀 Launched!")
 ```
 
 ---
